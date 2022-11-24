@@ -1,0 +1,64 @@
+/*
+    Day 8 coding Statement:  Write a program to find roots of a quadratic equation
+
+Description
+
+Get the values of a, b and c (coefficients of quadratic equation) as input from the user and calculate the roots and print as the output.
+
+Input
+
+Enter the value of a, b and c : 1 -6 9
+
+Output
+
+Roots are equal
+
+Root 1= root 2 = 3.00
+
+ 
+*/
+import java.util.Scanner;
+
+public class Sukumar_Day8
+{
+  public static void main (String[]args)
+  {
+    System.out.println("Enter values of a,b and c");
+    Scanner in = new Scanner (System.in);
+    double a = in.nextDouble();
+    double b = in.nextDouble();
+    double c = in.nextDouble();
+     
+ 
+        double d = b * b - 4 * a * c;
+        double sqrt_val = Math.sqrt(d);
+ 
+        if (d > 0) {
+            System.out.println("Roots are real and different \n");
+			      System.out.println(
+			      	(double)(-b + sqrt_val) / (2 * a) + "\n"
+			      	+ (double)(-b - sqrt_val) / (2 * a));
+        }
+        else if (d == 0) {
+            System.out.println(	"Roots are real and same \n");
+			      System.out.println(-(double)b / (2 * a) + "\n"
+							+ -(double)b / (2 * a));
+        }
+        else 
+        {
+            System.out.println("Roots are complex \n");
+            System.out.println(-(double)b / (2 * a) + " + i"
+							+ sqrt_val / (2 * a) + "\n"
+							+ -(double)b / (2 * a)
+							+ " - i"
+							+ sqrt_val / (2 * a));
+
+            
+        }
+    
+  }
+   
+}
+
+
+
