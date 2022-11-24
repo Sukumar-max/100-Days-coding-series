@@ -1,0 +1,61 @@
+/*
+   Day 6 coding Statement:  Write a program to find the Quadrants in which coordinates lie
+
+Get the value of x and y coordinates as input from the user and check in which quadrant the point lies and print it.
+
+Input
+
+10 20
+
+Output
+
+This point lies in first quadrant.
+
+Input
+
+-10 20
+
+Output
+
+This point lies in second quadrant.
+
+
+*/
+import java.util.Scanner;
+public class Sukumar_Day6{
+	public static void main(String[] args) {
+		 Scanner in = new Scanner(System.in);
+	    System.out.println("Enter x-axis :");
+	    int x = in.nextInt();
+	    System.out.println("Enter y-axis :");
+	    int y = in.nextInt();
+	    if(x>0 && y>0){
+	        System.out.println("Point Lies in First Quardant");
+	    }
+	    else if(x<0 && y>0){
+	        System.out.println("Point Lies in Second Quardant");
+	    }
+	    else if(x<0 && y<0){
+	        System.out.println("Point lies in Third Quardant");
+	    }
+	    else if(x>0 && y<0){
+	        System.out.println("Point Lies in Fourth Quardant");
+	    }
+	    else if(x == 0 && y>0){
+	        System.out.println("Point Lies in Positive y axis");
+	    }
+	    else if(x == 0 && y<0){
+	        System.out.println("Point Lies in Negative y axis");
+	    }
+	    else if(y == 0 && x>0){
+	        System.out.println("Point Lies in Positive x axis");
+	    }
+	    else if(y == 0 && x<0){
+	        System.out.println("Point Lies in Negative x axis");
+	    }
+	    else{
+	       System.out.println("Point Lies in CenTer point");
+	    }
+
+	}
+}
