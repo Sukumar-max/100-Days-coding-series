@@ -1,36 +1,37 @@
 /*
-    Day 13 coding Statement:  Write a program to find Sum of N natural numbers
+    Day 12 coding Statement:  Write a program to find Sum of digits of a number
 
 Description
 
-Get the input from the user for the value of n and then find the sum of first n natural numbers.
+Get a number from user and then find the sum of the digits in the given number.
 
-e.g. let the n value = 5
+E.g. let the number = 341
 
-then first 5 natural numbers are 1,2,3,4,5 for which we need to find the sum
-
-Therefore sum of first 5 natural numbers is 1+2+3+4+5 = 15
+Sum of digits is 3+4+1= 8
 
 Input
 
-4
+4521
 
 Output
 
-10
+12
 */
+
 import java.util.Scanner;
 public class Sukumar_Day12
 {
 	public static void main(String[] args) {
-	    System.out.println("Enter the number :");
-		Scanner in = new Scanner(System.in);
-		int number = in.nextInt();
-		int sum = 0;
-		for(int i=1;i<=number;i++){
-		    sum = sum + i;
-		}
-		System.out.println(sum);
-		
+	    System.out.println("Enter the Number :");
+	    Scanner in = new Scanner(System.in);
+	    int number = in.nextInt();
+	    int count = 0;
+	    while(number > 0){
+	        int rem  = number % 10;
+	        count += rem;
+	        number /= 10;
+	    }
+	    System.out.println(count);
+	    
 	}
 }
