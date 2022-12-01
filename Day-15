@@ -1,0 +1,57 @@
+/*
+    Day 15 coding Statement : Write a program to identify if the number is Strong number or not
+
+Description
+
+Get a number as input from user and then check whether that number is a strong number or not. A number is said to be strong number if the sum of the factorial of each digit in the number is same as that of the number.
+
+E.g. let the number be 145
+
+Here 1! + 4! + 5! is 1 + 24 + 120 which is equal to 145 itself.
+
+Input
+
+121
+
+Output
+
+Not a strong number
+
+Input
+
+2
+
+Output
+
+Strong number
+
+ 
+*/
+import java.util.Scanner;
+public class Sukumar_Day15
+{
+	public static void main(String[] args) {
+		System.out.println("Enter a number :");
+		Scanner in = new Scanner(System.in);
+		int number = in.nextInt();
+		int temp_number = number;
+		int count = 1;
+		int total = 0;
+		while(number > 0){
+		    int rem = number % 10;
+		    for(int i=1;i<=rem;i++){
+		        count = count * i;
+		    }
+		    total = total + count;
+		    count = 1;
+		    number = number / 10;
+		    
+		}
+		if(total == temp_number){
+		    System.out.println("Strong number");
+		}
+		else{
+		    System.out.println("Not a Strong number");
+		}
+	}
+}
