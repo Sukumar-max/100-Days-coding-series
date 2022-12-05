@@ -1,0 +1,55 @@
+/*
+    Day 19 coding Statement : Write a program to identify if the number is Armstrong number or not
+
+Description
+
+Get an input number from user and check whether the given number is an Armstrong number or not.
+
+E.g. Let the number be 1634,
+
+Here 1^4 + 6^4 + 3 ^4 + 4^4 = 1634
+
+Therefore, this is an Armstrong number
+
+Input
+
+153
+
+Output
+
+Armstrong number
+
+Input
+
+121
+
+Output
+
+Not an Armstrong number  
+
+ 
+*/
+import java.util.Scanner;
+public class Sukumar_Day19
+{
+	public static void main(String[] args) {
+		 Scanner in = new Scanner(System.in);
+        int number = in.nextInt();
+        String str = Integer.toString(number);
+        int num_len = str.length();
+        int temp_num = number;
+        int sum = 0;
+        while(number > 0){
+            int rem = number % 10;
+            sum = sum + (int)Math.pow(rem , num_len);
+            number = number / 10;
+        }
+        if(temp_num == sum){
+            System.out.println("Armstrong Number ");    
+        }
+        else{
+            System.out.println("Not a Armstrong Number");
+        }
+
+	}
+}
