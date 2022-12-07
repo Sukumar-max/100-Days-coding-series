@@ -1,0 +1,53 @@
+/*
+    Day 21 coding Statement : Write a program to identify if the number is Palindrome or not
+
+Description
+
+Get a number as input from the user and check whether that number is a Palindrome or not.
+
+Input
+
+121
+
+Output
+
+Palindrome
+
+Input
+
+34
+
+Output
+
+Not a Palindrome
+
+Explantation :
+		 The code is a program that asks the user to input an integer and then prints out whether or not it is a palindrome number.
+ 		 The code is a program that will calculate the sum of an integer number and then print out if it's a palindrome or not.
+ 		 The code starts by defining the variables to be used in the program.
+		 Next, we define a variable called number which will hold the inputted integer value.
+		 Then we define another variable called temp_num which will hold the result of adding up all numbers from 1-10 and dividing them by 10.
+		 Lastly, we have defined two more variables called sum and rem which are used for calculating each digit in the number.
+*/
+import java.util.Scanner;
+public class Sukumar_Day21
+{
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		int number = in.nextInt();
+		int temp_num = number;
+		int sum = 0;
+	    
+	    while(number > 0){
+	        int rem = number % 10;
+	        sum = (sum * 10) + rem;
+	        number = number / 10;
+	    }
+	    if(temp_num == sum){
+	        System.out.println("Palindrome number");
+	    }
+	    else{
+	        System.out.println("Not a Palindrome Number");
+	    }
+	}
+}
