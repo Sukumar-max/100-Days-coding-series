@@ -1,0 +1,28 @@
+/*
+    Day 28 coding Statement : Write a Program to reverse a string.
+
+Description
+
+Get an input string from user and print it in reverse order.
+
+Input
+
+Hello
+
+Output
+
+olleH
+*/
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		System.out.print("Enter the String : ");
+		String str = in.next();
+		for(int i=str.length()-1;i>=0;i--){
+		    System.out.print(str.charAt(i));
+		}
+		
+	}
+}
