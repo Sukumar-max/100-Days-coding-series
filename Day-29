@@ -1,0 +1,35 @@
+/*
+Day 29 coding Statement : Write a Program to concatenate a string.
+
+Description
+
+Get two strings as input from the user and then concatenate it.
+
+Input
+
+Enter first string
+
+Hello
+
+Enter second string
+
+Hi
+
+Output
+
+HelloHi
+*/
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner in = new Scanner(System.in);
+	    System.out.println("Enter the First String :");
+	    String first_string = in.next();
+	    System.out.println("Enter the Second String :");
+	    String second_string = in.next();
+	    String concat_string = first_string.concat(second_string);
+	    System.out.println("Concadenated String is "+ concat_string);
+	    
+	}
+}
