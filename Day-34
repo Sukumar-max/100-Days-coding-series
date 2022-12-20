@@ -1,0 +1,34 @@
+
+/*
+    Day 34 coding Statement : Write a Program to Remove brackets from an algebraic expression
+
+Description
+
+Get an algebraic expression as input from the user and then remove all the brackets in that.
+
+Input
+
+7x+(2*y)
+
+Output
+
+7x+2*y
+*/
+import java.util.Scanner;
+class Sukumar_Day34 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the Algebric expression :");
+        String str = in.next();
+        String removed_str = "";
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i) == '(' || str.charAt(i) == ')'){
+                continue;
+            }
+            else{
+                removed_str = removed_str + str.charAt(i);
+            }
+        }
+        System.out.println(removed_str);
+    }
+}
