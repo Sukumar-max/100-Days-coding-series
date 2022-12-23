@@ -1,0 +1,23 @@
+
+import java.util.Scanner;
+
+public class Sukumar_Day37{
+    public static void main(String[] args) {
+
+        System.out.println("Enter a Word :");
+        Scanner in = new Scanner(System.in);
+        String str = in.next();
+        for (char i = 97; i <= 122; i++) {
+            int target = (char)i;
+            int count = 0;
+            for (int j = 0; j < str.length(); j++) {
+                if (target == str.charAt(j)) {
+                    count++;
+                }
+            }
+            if(count > 0) {
+                System.out.println((char) target + " occurs " + count + " times");
+            }
+        }
+        }
+    }
