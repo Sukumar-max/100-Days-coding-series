@@ -1,0 +1,45 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+/*
+    Day 41 coding Statement : Check if two strings match where one string contains wildcard characters
+
+Description
+
+Get two strings as input from the user, first with wildcard characters (* and ?) and second without wildcard characters.
+
+Then check whether they match or not.
+
+Input
+
+Ta**nt
+
+Talent
+
+Output
+
+Yes they match
+
+*/
+import java.util.Scanner;
+class Sukumar_Day41 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the First String : ");
+        String first_String = in.next();
+        System.out.println("Enter the Second String : ");
+        String second_String = in.next();
+        int count = 0;
+        for(int i=0;i<first_String.length();i++){
+            if(first_String.charAt(i) == second_String.charAt(i) || first_String.charAt(i) == '*' || first_String.charAt(i) == '?'){
+                count++;
+            }
+        }
+        if(count == first_String.length()){
+            System.out.println("Yes they Match ");
+        }
+        else{
+          System.out.println("No they doesn't match ");  
+        }
+        
+    }
+}
