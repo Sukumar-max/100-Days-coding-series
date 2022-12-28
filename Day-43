@@ -1,0 +1,51 @@
+/*
+    Day 43 coding Statement : Write Program to find the array type
+
+Description
+
+Get an array as input from the user and check the type of the array, whether it is odd, even or mixed type.
+
+Input
+
+Enter size of array :
+
+3
+
+Enter elements 
+
+1 3 5
+
+Output
+
+Odd
+*/
+import java.util.Scanner;
+class Sukumar_Day43 {
+    public static void main(String[] args) {
+        Scanner in =  new Scanner(System.in);
+        System.out.println("Enter Size of the Array : ");
+        int array_size = in.nextInt();
+        int[] arr = new int[array_size];
+        
+        int even = 0;
+        int odd = 0;
+        for(int i=0;i<array_size;i++){
+            arr[i] = in.nextInt();
+            if(arr[i] % 2 == 0){
+                even++;
+            }
+            else{
+                odd++;
+            }
+        }
+        if(odd == arr.length){
+            System.out.println("Odd");
+        }
+        else if(even == arr.length){
+            System.out.println("Even");
+        }
+        else{
+            System.out.println("Mixed");
+        }
+    }
+}
