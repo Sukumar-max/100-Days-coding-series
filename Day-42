@@ -1,0 +1,71 @@
+
+/*
+  Description
+
+Get two arrays as the input from the user and check whether it is the same or not.
+
+Input
+
+Enter the size of first array :
+
+3
+
+Enter the size of second array :
+
+3
+
+Enter elements of first array :
+
+1 2 3
+
+Enter elements of second array :
+
+1 2 3
+
+Output
+
+Same
+*/
+
+import java.util.*;
+
+public class Sukumar_Day42{
+    public static void main(String[] args) {
+      Scanner in = new Scanner(System.in);
+      System.out.println("Enter the size of First Array : ");
+      int first_array_size = in.nextInt();
+      int[] first_arr = new int[first_array_size];
+      System.out.println("Enter the size of Second Array : ");
+      int second_array_size = in.nextInt();
+      int[] second_arr = new int[second_array_size];
+      System.out.println("Enter elements of first Array : ");
+      for(int i=0;i<first_array_size;i++){
+            first_arr[i] = in.nextInt();
+      }
+      System.out.println("Enter elements of second Array : ");
+      for(int j=0;j<second_array_size;j++){
+          second_arr[j] = in.nextInt();
+      }
+      int count = 0;
+      if(first_arr.length != second_arr.length){
+          System.out.println("Not Same");
+      }
+      else{
+          for(int i=0;i<first_arr.length;i++){
+              if(first_arr[i] == second_arr[i]){
+                  count++;
+                  
+              }
+          }
+      }
+      if(count == first_arr.length){
+        System.out.println("Same ");
+      }
+      else{
+          System.out.println("Not Same");
+      }
+      
+      
+      
+  }
+}
