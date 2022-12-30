@@ -1,0 +1,53 @@
+/*
+    Day 45 coding Statement : Write Program to find smallest and largest element in an array
+
+Description
+
+Get an array as input from the user and then find the smallest and largest element in the array.
+
+Input
+
+Enter the size of array :
+
+5
+
+Enter the elements :
+
+10 20 5 40 30
+
+Output
+
+Smallest Number :
+
+5
+
+Largest Number :
+
+40
+*/
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the Size : ");
+        int size = in.nextInt();
+        System.out.println("Enter the Elements : ");
+        int[] arr = new int[size];
+        
+        for(int i=0;i<size;i++){
+            arr[i] = in.nextInt();
+        }
+        int small_num = arr[0];
+        int high_num = arr[0];
+        for(int i=0;i<size;i++){
+            if(small_num > arr[i]){
+                small_num = arr[i];
+            }
+            if(high_num < arr[i]){
+                high_num = arr[i];
+            }
+        }
+        System.out.println("Largest Number is : "+high_num);
+        System.out.println("Smallest Number is : "+small_num);
+    }
+}
