@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class Sukumar_Day47{
+   public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the Size of the Array : ");
+        int size = in.nextInt();
+        System.out.println("Enter the elements of the Array : ");
+        int[] ans = new int[size];
+        int max = ans[0];
+        int temp=0;
+
+        for(int i=0;i<size;i++){
+            ans[i] = in.nextInt();
+            temp = ans[i];
+            if(isPalindrome(temp) == temp){
+                if(ans[i] > max){
+                    max = ans[i];
+                }
+            }
+        
+        }
+    System.out.println(max);
+
+
+   }
+ public static int isPalindrome(int temp){
+        int sum = 0;
+        int checkValue = temp;
+        while(temp  > 0){
+            int rem = temp % 10;
+            sum = sum * 10 + rem;
+            temp = temp / 10;
+        }
+        if(checkValue == sum){
+            return sum;
+        }
+        else{
+            return 0;
+        }
+ }
+   }
+
