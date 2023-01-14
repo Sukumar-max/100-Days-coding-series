@@ -1,0 +1,48 @@
+/*
+    Day 58 coding Statement : Bucket Filling
+
+Nejiya has a bucket having a capacity of K liters. It is already filled with X liters of water.
+
+Find the maximum amount of extra water in liters that Nejiya can fill in the bucket without overflowing.
+
+Input Format
+
+The first line will contain T - the number of test cases. Then the test cases follow.
+
+The first and only line of each test case contains two space separated integers K and X - as mentioned in the problem.
+
+Output Format
+
+For each test case, output in a single line, the amount of extra water in liters that Nejiya can fill in the bucket without overflowing.
+
+Sample Input 1
+
+2
+
+5 4
+
+15 6
+
+Sample Output 1
+
+1
+
+9
+*/
+import java.util.Scanner;
+class Sukumar_Day58 {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter the Number of Testcases : ");
+        int no_of_testcases = in.nextInt();
+        int[] K = new int[no_of_testcases];
+        int[] X = new int[no_of_testcases];
+        for(int i=0;i<no_of_testcases;i++){
+            K[i] = in.nextInt();
+            X[i] = in.nextInt();
+        }
+        for(int i=0;i<no_of_testcases;i++){
+            System.out.println(K[i]-X[i]);  
+        }
+    }
+}
