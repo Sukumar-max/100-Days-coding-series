@@ -1,0 +1,83 @@
+/*
+    A string is called boring if all the characters of the string are same.
+
+You are given a string S of length N, consisting of lowercase english alphabets. Find the length of the longest boring substring of S which occurs more than once.
+
+Note that if there is no boring substring which occurs more than once in S, the answer will be 00.
+
+A substring is obtained by deleting some (possibly zero) elements from the beginning of the string and some (possibly zero) elements from the end of the string.
+
+Input Format
+
+The first line of input will contain a single integer T, denoting the number of test cases.
+Each test case consists of two lines of input.
+The first line of each test case contains an integer N, denoting the length of string S.
+The next contains string S.
+Output Format
+
+For each test case, output on a new line, the length of the longest boring substring of S which occurs more than once.
+
+ 
+
+Sample Input
+
+4
+
+3
+
+aaa
+
+3
+
+abc
+
+5
+
+bcaca
+
+6
+
+caabaa
+
+ 
+
+Sample Output
+
+2
+
+0
+
+1
+
+2
+*/
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            String s = sc.next();
+            int ans = 0;
+            for (int i = 0; i < n; i++) {
+                for (int j = i + 1; j <= n; j++) {
+                    String sub = s.substring(i, j);
+                    int count = 0;
+                    for (int k = 0; k <= n - sub.length(); k++) {
+                        if (s.substring(k, k + sub.length()).equals(sub)) {
+                            count++;
+                        }
+                    }
+                    if (count > 1) {
+                        ans = Math.max(ans, sub.length());
+                    }
+                }
+            }
+            System.out.println(ans);
+        }
+        sc.close();
+    }
+}
+
