@@ -1,0 +1,85 @@
+/*
+	Alice and Bob went to a pet store. There are N animals in the store where the ith animal is of type Ai?.
+
+Alice decides to buy some of these N animals. Bob decides that he will buy all the animals left in the store after Alice has made the purchase.
+
+Find out whether it is possible that Alice and Bob end up with exactly same multiset of animals.
+
+Input Format
+
+The first line of input will contain a single integer T, denoting the number of test cases.
+Each test case consists of multiple lines of input.
+The first line of each test case contains an integer N — the number of animals in the store.
+The next line contains N space separated integers, denoting the type of each animal.
+Output Format
+
+For each test case, output on a new line, YES, if it is possible that Alice and Bob end up with exactly same multiset of animals and NO otherwise.
+
+You may print each character in uppercase or lowercase. For example, the strings YES, yes, Yes, and yES are considered identical.
+
+ 
+
+Sample Input
+
+4
+
+3
+
+4 4 4
+
+4
+
+2 3 3 2
+
+4
+
+1 2 2 3
+
+6
+
+5 5 1 5 1 5
+
+ 
+
+Sample Output
+
+NO
+
+YES
+
+NO
+
+YES
+
+ 
+*/
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Sukumar_Day80{
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int t = sc.nextInt();
+    while (t-- > 0) {
+      int n = sc.nextInt();
+      HashMap<Integer, Integer> map = new HashMap<>();
+      for (int i = 0; i < n; i++) {
+        int a = sc.nextInt();
+        map.put(a, map.getOrDefault(a, 0) + 1);
+      }
+      int odd = 0;
+      for (int value : map.values()) {
+        if (value % 2 == 1) {
+          odd++;
+        }
+      }
+	if(odd <= 1 ) {
+		System.out.println("YES");
+	}
+	else{
+		System.out.println("YES");
+	}
+      
+    }
+   }
+}
