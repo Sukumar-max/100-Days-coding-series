@@ -1,0 +1,99 @@
+/*
+	Given an undirected graph and an integer M. The task is to determine if the graph can be colored with at most M colors such that no two adjacent vertices of the graph are colored with the same color. Here coloring of a graph means the assignment of colors to all vertices. Print 1 if it is possible to colour vertices and 0 otherwise.
+
+Example 1:
+
+Input:
+N = 4
+M = 3
+E = 5
+Edges[] = {(0,1),(1,2),(2,3),(3,0),(0,2)}
+
+Output: 1
+Explanation: It is possible to colour the given graph using 3 colours.
+
+Example 2:
+
+Input:
+N = 3
+M = 2
+E = 3
+Edges[] = {(0,1),(1,2),(0,2)}
+Output: 0
+*/
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Graph {
+    int numberOfVertices; // Number of vertices in the graph
+    ArrayList<Integer>[] adjacencyList; // Adjacency list to store the edges
+    int[] colors; // Color array to store the colors assigned to each vertex
+
+    Graph(int numberOfVertices) {
+        this.numberOfVertices = numberOfVertices;
+        adjacencyList = new ArrayList[numberOfVertices];
+        for (int i = 0; i < numberOfVertices; i++) {
+            adjacencyList[i] = new ArrayList<Integer>();
+        }
+        colors = new int[numberOfVertices];
+    }
+
+    void addEdge(int u, int v) {
+        // Add the edge to both the vertices' adjacency list
+        adjacencyList[u].add(v);
+        adjacencyList[v].add(u);
+    }
+
+    boolean isPossible(int m) {
+        // Initialize all colors to -1
+        for (int i = 0; i < numberOfVertices; i++) {
+            colors[i] = -1;
+        }
+
+        // Check if coloring is possible for each vertex
+        for (int i = 0; i < numberOfVertices; i++) {
+            if (colors[i] == -1) {
+                if (!dfs(i, m, 0)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    boolean dfs(int u, int m, int c) {
+        colors[u] = c;
+        for (int i = 0; i < adjacencyList[u].size(); i++) {
+            int v = adjacencyList[u].get(i);
+            if (colors[v] == -1) {
+                if (!dfs(v, m, (c + 1) % m)) {
+                    return false;
+                }
+            } else if (colors[v] == c) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int numberOfVertices = sc.nextInt();
+        int numberOfColors = sc.nextInt();
+        int numberOfEdges = sc.nextInt();
+        Graph graph = new Graph(numberOfVertices);
+        for (int i = 0; i < numberOfEdges; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            graph.addEdge(u, v);
+        }
+        if (graph.isPossible(numberOfColors)) {
+            System.out.println(1);
+        } else {
+            System.out.println(0);
+        }
+        sc.close();
+    }
+}
