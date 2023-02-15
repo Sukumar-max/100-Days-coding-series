@@ -1,0 +1,103 @@
+/*
+    Given a complete binary tree with the height of H, we index the nodes respectively top-down and left-right from 1. The i-th node stores a positive integer Vi. Define Pi as follows: Pi=Vi if the i-th node is a leaf, otherwise Pi=max(Vi*PL, Vi*PR), where L and R are the indices of the left and right children of i, respectively. Your task is to caculate the value of P1.
+
+Input
+
+There are several test cases (fifteen at most), each formed as follows:
+
+The first line contains a positive integer H (H ≤ 15).
+The second line contains 2H-1 positive integers (each having a value of 109 at most), the i-th integer shows the value of Vi.
+The input is ended with H = 0.
+
+Output
+
+For each test case, output on a line an integer which is the respective value of P1 found, by modulo of 1,000,000,007.
+
+Sample Input
+
+2
+
+1 2 3
+
+3
+
+3 1 5 2 6 4 7
+
+0
+
+Sample Output
+
+3
+
+105
+
+Explanation
+
+     3
+
+    / \
+
+   /   \
+
+  1     5
+
+ / \   / \
+
+2   6 4   7
+
+ 
+*/
+import java.util.*;
+
+public class Main {
+    static final int MOD = 1000000007;
+    static int[] values;
+    static int[][] dp;
+
+    public static int solve(int node, int flag) {
+        if (dp[node][flag] != -1) {
+            return dp[node][flag];
+        }
+        int left = 2 * node, right = 2 * node + 1;
+        if (left >= values.length) {
+            return dp[node][flag] = (int) ((long) values[node - 1] * flag % MOD);
+        }
+        int leftValue = solve(left, flag);
+        int rightValue = solve(right, flag);
+        if (flag == 1) {
+            return dp[node][flag] = (int) ((long) values[node - 1] * leftValue % MOD * rightValue % MOD % MOD);
+        } else {
+            return dp[node][flag] = (int) ((long) values[node - 1] * modInverse(leftValue) % MOD * modInverse(rightValue) % MOD % MOD);
+        }
+    }
+
+    public static int modInverse(int a) {
+        int b = MOD - 2;
+        int res = 1;
+        while (b > 0) {
+            if ((b & 1) == 1) {
+                res = (int) ((long) res * a % MOD);
+            }
+            a = (int) ((long) a * a % MOD);
+            b >>= 1;
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int h = in.nextInt();
+        while (h > 0) {
+            int n = (1 << h) - 1;
+            values = new int[n];
+            dp = new int[n + 1][2];
+            Arrays.fill(dp[0], 1);
+            for (int i = 0; i < n; i++) {
+                values[i] = in.nextInt();
+                Arrays.fill(dp[i + 1], -1);
+            }
+            System.out.println(solve(1, 1));
+            h = in.nextInt();
+        }
+    }
+}
