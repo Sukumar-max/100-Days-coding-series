@@ -1,0 +1,117 @@
+/*
+	Day 98 coding Statement : 
+
+There are N breakfasts in the restaurant “Fat Hut” where the Arun works. The ith breakfast has an attractiveness Ai? and cost Ci?.
+
+Arun has noticed that nobody takes the jth breakfast if there exists at least one breakfast i such that Ai?≥Aj? and Ci?<Cj?.
+
+In other words, if a breakfast is less attractive and more expensive than any of the other dishes, then nobody is interested in that breakfast.
+
+Arun will be happy if all the N breakfasts have a chance to be taken. Unfortunately, Arun has no power over prices. On the other hand, he can change the attractiveness of some breakfasts by some real number. However, after the changes, the attractiveness of the ith breakfast must lie in the interval [Li?,Ri?].
+
+He would also like to change the attractiveness of the minimum number of breakfasts. Help the Chef do it.
+
+Input Format
+
+The first line of the input contains a single integer T denoting the number of test cases. The description of T test cases follows.
+Each testcase contains N+1 lines of input.
+The first line of each test case contains a single integer N - number of breakfasts.
+N lines follow. For each valid i, the hith of these lines contains four space-separated integers Ai?, Ci?, Li?, Ri? - current attractiveness, cost, the minimal and maximal allowed attractiveness after change of i-th breakfast.
+Output Format
+
+For each test case, print in a single line containing one integer - minimum number of breakfasts the Chef should change so that all the N breakfasts have a chance to be taken. Print "-1"(without quotes) if it is impossible to achieve the goal.
+
+ 
+
+Sample Input
+
+2
+
+4
+
+5 1 1 5
+
+4 4 2 5
+
+2 2 2 5
+
+3 3 2 5
+
+4
+
+5 1 2 5
+
+4 4 2 5
+
+2 2 2 5
+
+3 3 2 5
+
+ 
+
+Sample Output
+
+1
+
+2
+
+ 
+*/
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            int[][] arr = new int[n][4];
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < 4; j++) {
+                    arr[i][j] = sc.nextInt();
+                }
+            }
+            System.out.println(minChanges(n, arr));
+        }
+    }
+    
+    public static int minChanges(int n, int[][] arr) {
+        // Sort the breakfasts by their attractiveness in ascending order
+        Arrays.sort(arr, (a, b) -> Integer.compare(a[0], b[0]));
+        
+        // Initialize the maximum allowed attractiveness for the first breakfast
+        int max_a = arr[0][3];
+        
+        // Count the number of breakfasts that need to be changed
+        int cnt = 0;
+        
+        for (int i = 1; i < n; i++) {
+            int a = arr[i][0];
+            int c = arr[i][1];
+            int l = arr[i][2];
+            int r = arr[i][3];
+            
+            // If the maximum allowed attractiveness is less than the current breakfast's attractiveness, it cannot be taken
+            if (max_a < a) {
+                return -1;
+            }
+            
+            // If the current breakfast is less attractive and more expensive than the previous breakfast, it needs to be changed
+            if (c < arr[i-1][1] && a <= arr[i-1][0]) {
+                // If the maximum allowed attractiveness is less than the previous breakfast's attractiveness, the current breakfast cannot be changed
+                if (r < arr[i-1][0]) {
+                    return -1;
+                }
+                
+                // Otherwise, increase the current breakfast's attractiveness to the minimum required value
+                cnt++;
+                a = arr[i-1][0];
+            }
+            
+            // Update the maximum allowed attractiveness for the next breakfast
+            max_a = Math.max(max_a, r);
+        }
+        
+        return cnt;
+    }
+}
